@@ -12,25 +12,32 @@
 <div class="text-center">
     <table class="table">
             <tr>
-            <td>серийный номер</td>
-            <td>дата забора груза</td>
-            <td>город получателя</td>
-            <td>адрес получателя</td>
-            <td>город отправителя</td>
-            <td>адресс отправителя</td>
-            <td>вес груза</td>
+                
+                
+                <td>серийный номер</td>
+                <td>дата забора груза</td>
+                <td>город получателя</td>
+                <td>адрес получателя</td>
+                <td>город отправителя</td>
+                <td>адресс отправителя</td>
+                <td>вес груза</td>
+            
         </tr>
         @foreach (var p in Model)
         {
-            <tr onclick="location.href = '@Url.Action("OrderView", "Home",new { id = p.Id })'">
-                    <td>@p.Id</td>
-                    <td>@p.Date</td>
-                    <td>@p.DestinationCity</td>
-                    <td>@p.DestinationAdress</td>
-                    <td>@p.SendersCity</td>
-                    <td>@p.SendersAdress</td>
-                    <td>@p.Weight</td>
-                </tr>
+            
+            <tr onclick="location.href = '@Url.Action("OrderView", "Home",new { id = p.Id })'" style="cursor: pointer">
+
+                <td>@p.Id</td>
+                <td>@p.Date</td>
+                <td>@p.DestinationCity</td>
+                <td>@p.DestinationAdress</td>
+                <td>@p.SendersCity</td>
+                <td>@p.SendersAdress</td>
+                <td>@p.Weight</td>
+
+            </tr>
+            
         }
     </table>
 </div>
