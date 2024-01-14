@@ -1,0 +1,50 @@
+﻿@using QuickOrder.Domain.Models;
+@model Order;
+@{
+    ViewData["Title"] = "AddOrder";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" asp-controller="Home" asp-action="AddOrder">
+
+    <style>
+        .form-container {
+            text-align: center;
+        }
+    </style>
+
+    <div class="form-container">
+        <div>
+            <label for="Date">Дата забора товара:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div>
+            <label for="DestinationCity">город доставки:</label>
+            <input type="text" id="DestinationCity" name="DestinationCity" required>
+        </div>
+
+        <div>
+            <label for="DestinationAdress">адрес доставки    :</label>
+            <input type="text" id="DestinationAdress" name="DestinationAdress" required>
+        </div>
+
+        <div>
+            <label for="SendersCity">город отправителя:</label>
+            <input type="text" id="SendersCity" name="SendersCity" required>
+        </div>
+
+        <div>
+            <label for="SendersAdress">адрес отправителя:</label>
+            <input type="text" id="SendersAdress" name="SendersAdress" required>
+        </div>
+
+        <div>
+            <label for="Weight">вес товара:</label>
+            <input type="number" id="Weight" name="Weight" required>
+        </div>
+
+        <button type="submit">Отправить</button>
+    </div>
+</form>

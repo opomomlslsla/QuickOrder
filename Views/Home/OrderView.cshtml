@@ -1,0 +1,17 @@
+﻿@using QuickOrder.Domain.Models;
+@model Order
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Order</h1>
+
+<P>Дата забора груза: @Model.Date</P>
+<p>Город отправителя: @Model.SendersCity</p>
+<p>Адресс отправителя: @Model.SendersAdress</p>
+<p>Город получателя @Model.DestinationCity</p>
+<p>Адресс получателя @Model.DestinationAdress</p>
+<p>Вес товара: @Model.Weight</p>
+
+
+
