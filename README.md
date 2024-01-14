@@ -8,5 +8,10 @@ https://dotnet.microsoft.com/en-us/download - ссылка на скачиван
 cd <#ваш путь к папке с проектом>
 dotnet build
 dotnet run
+после этого в командной строке вы увидите следующие строки: 
+Сборка…
+info: Microsoft.Hosting.Lifetime[14]
+Now listening on: http://localhost:5291 (у вас будет другой порт)
+вам нужно перейти по вашей ссылке "http://localhost:5291"
 
 Для того чтобы запустить программу в visual studio вам нужно открыть решение в visual studio и запустить отладку.
