@@ -26,7 +26,7 @@ namespace QuickOrder.Services
             _context.SaveChanges();
         }
 
-        public async Task<ICollection<Order>> GetAllOrdersasync()
+        public async Task<ICollection<Order>> GetAllOrdersAsync()
         {
             return await _context.Orders.ToListAsync();
         }

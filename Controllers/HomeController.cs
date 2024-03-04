@@ -16,7 +16,7 @@ namespace QuickOrder.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Order> Orders = (List<Order>) await _service.GetAllOrdersasync();
+            List<Order> Orders = (List<Order>) await _service.GetAllOrdersAsync();
             return View(Orders);
         }
 
