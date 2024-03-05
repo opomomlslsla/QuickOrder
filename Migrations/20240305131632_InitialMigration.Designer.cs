@@ -12,8 +12,8 @@ using QuickOrder.Data;
 namespace QuickOrder.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240114005930_initial")]
-    partial class initial
+    [Migration("20240305131632_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,8 @@ namespace QuickOrder.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.HasSequence("OrderSequence");
 
             modelBuilder.Entity("QuickOrder.Domain.Models.Order", b =>
                 {
@@ -49,6 +51,13 @@ namespace QuickOrder.Migrations
                     b.Property<string>("SendersCity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SerialNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR [OrderSequence]");
+
+                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("SerialNumber"));
 
                     b.Property<int>("Weight")
                         .HasColumnType("int");

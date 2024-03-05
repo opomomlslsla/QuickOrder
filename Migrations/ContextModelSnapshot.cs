@@ -22,6 +22,8 @@ namespace QuickOrder.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence("OrderSequence");
+
             modelBuilder.Entity("QuickOrder.Domain.Models.Order", b =>
                 {
                     b.Property<Guid>("Id")
@@ -46,6 +48,13 @@ namespace QuickOrder.Migrations
                     b.Property<string>("SendersCity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SerialNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR [OrderSequence]");
+
+                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("SerialNumber"));
 
                     b.Property<int>("Weight")
                         .HasColumnType("int");

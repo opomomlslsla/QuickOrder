@@ -28,7 +28,7 @@ namespace QuickOrder.Services
 
         public async Task<ICollection<Order>> GetAllOrdersAsync()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders.OrderByDescending(x => x.SerialNumber).ToListAsync();
         }
 
         public async Task<Order> GetOrderByIdAsync(Guid id)
