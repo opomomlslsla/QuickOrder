@@ -10,16 +10,14 @@
 
 - [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download) — для запуска бэкенда
 - [Node.js](https://nodejs.org/) — для запуска фронтенда
-После установки откройте командную строку и выполните следующие команды:
+После установки откройте командную строку и выполните следующие команды в коммандной строке:
 
-bash:
-1)
-cd <путь к папке с проектом>
+1)cd <путь к папке с проектом>quickorder.Server
 dotnet build
 dotnet run
 
 2) Перейдите в папку с фронтендом
-cd quickorder.client
+cd <путь к папке с проектом>quickorder.client
 npm install
 npm run dev
 
