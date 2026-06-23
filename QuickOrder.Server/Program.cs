@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using QuickOrder.Application;
 using QuickOrder.Infrastructure;
+using QuickOrder.Infrastructure.Data;
 using QuickOrder.Server.Middleware;
 namespace QuickOrder.Server
 {
@@ -22,13 +24,24 @@ namespace QuickOrder.Server
                 options.AddPolicy("reactFrontEnd",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:5173")
+                        policy.WithOrigins(
+                                "http://localhost:5173",    // Vite локально
+                                "http://localhost:80",      // Docker фронтенд
+                                "http://localhost")
                               .AllowAnyMethod()
-                              .AllowAnyHeader();
+                              .AllowAnyHeader()
+                              .AllowCredentials();
                     });
             });
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<Context>();
+                if(!dbContext.Database.GetAppliedMigrations().Any())
+                    dbContext.Database.Migrate();
+            }
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 

@@ -6,9 +6,9 @@ namespace QuickOrder.Infrastructure.Data
     {
         public Context(DbContextOptions<Context> options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders{ get; set; }
     }
 }

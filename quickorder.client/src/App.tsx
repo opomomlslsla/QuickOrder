@@ -200,8 +200,8 @@ function App() {
                                     placeholder="Введите вес груза"
                                     value={formData.weight || ''}
                                     onChange={(e) => setFormData({ ...formData, weight: parseFloat(e.target.value) || 0 })}
-                                    min="0.1"
-                                    step="0.1"
+                                    min="1"
+                                    step="1"
                                     required
                                 />
                             </div>

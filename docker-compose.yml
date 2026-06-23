@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: QuickOrder.Server/Dockerfile
+    container_name: quickorder-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - quickorder-network
+
+  frontend:
+    build:
+      context: ./quickorder.client
+      dockerfile: Dockerfile
+    container_name: quickorder-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - quickorder-network
+
+networks:
+  quickorder-network:
+    driver: bridge

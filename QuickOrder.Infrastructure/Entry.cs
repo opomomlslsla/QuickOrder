@@ -13,7 +13,7 @@ public static class Entry
     public static IServiceCollection ConfigureInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<Context>(opt =>
-            opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            opt.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
         services.AddScoped<IRepository<Order>, OrderRepository>();
         return services;
     }
