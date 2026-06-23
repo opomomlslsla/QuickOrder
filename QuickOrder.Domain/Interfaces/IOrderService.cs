@@ -12,6 +12,6 @@ namespace QuickOrder.Domain.Interfaces
         Task<ICollection<Order>> GetOrdersAsync(int page);
         Task<Order?> GetOrderByIdAsync(Guid id);
         Task AddOrderAsync(Order order);
-        void DeleteOrderByIdAsync(Guid id);
+        Task DeleteOrderByIdAsync(Guid id);
     }
 }

@@ -15,7 +15,7 @@ namespace QuickOrder.Application.Services
             logger.LogInformation($"Заказ создан: Id: {order.Id} Номер: {order.SerialNumber}");
         }
 
-        public async void DeleteOrderByIdAsync(Guid id)
+        public async Task DeleteOrderByIdAsync(Guid id)
         {
             logger.LogInformation($"Удаление заказа: Id: {id}");
             var order = await orders.FirstAsync(x => x.Id == id);
