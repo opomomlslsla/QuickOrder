@@ -25,15 +25,15 @@ namespace QuickOrder.Application.Services
             logger.LogInformation($"Заказ удален: Id: {id}");
         }
 
-        public async Task<ICollection<Order>> GetOrdersAsync(int page)
+        public async Task<ICollection<Order>> GetOrdersAsync(int page, CancellationToken cancellationToken)
         {
             if(page < 1) page = 1;
-            return await orders.GetWithPagination(page, 100);
+            return await orders.GetWithPagination(page, 100, cancellationToken);
         }
 
-        public async Task<Order?> GetOrderByIdAsync(Guid id)
+        public async Task<Order?> GetOrderByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await orders.FirstAsync(x => x.Id == id);
+            return await orders.FirstAsync(x => x.Id == id, cancellationToken);
         }
     }
 }

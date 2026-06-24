@@ -11,9 +11,9 @@ namespace ReactApp1.Server.Controllers
     {
 
         [HttpGet]
-        public async Task<IActionResult> GetOrders([FromQuery] int page = 1)
+        public async Task<IActionResult> GetOrders([FromQuery] int page = 1, CancellationToken cancellationToken)
         {
-            var orders = await orderService.GetOrdersAsync(page);
+            var orders = await orderService.GetOrdersAsync(page, cancellationToken);
             var result = orders.Select(x => new OrderBaseInfo(x.Id, x.SenderCity, x.RecipientCity, x.PickupDate, x.Status, x.SerialNumber)).ToArray();
             return Ok(result);
         }
