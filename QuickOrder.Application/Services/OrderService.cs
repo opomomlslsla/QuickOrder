@@ -18,7 +18,7 @@ namespace QuickOrder.Application.Services
         public async Task DeleteOrderByIdAsync(Guid id)
         {
             logger.LogInformation($"Удаление заказа: Id: {id}");
-            var order = await orders.FirstAsync(x => x.Id == id);
+            var order = await orders.FirstAsync(x => x.Id == id, CancellationToken.None);
             if (order != null)
                 orders.Delete(order);
             await orders.SaveChangesAsync();

@@ -11,7 +11,7 @@ namespace ReactApp1.Server.Controllers
     {
 
         [HttpGet]
-        public async Task<IActionResult> GetOrders([FromQuery] int page = 1, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetOrders([FromQuery] int page, CancellationToken cancellationToken)
         {
             var orders = await orderService.GetOrdersAsync(page, cancellationToken);
             var result = orders.Select(x => new OrderBaseInfo(x.Id, x.SenderCity, x.RecipientCity, x.PickupDate, x.Status, x.SerialNumber)).ToArray();
@@ -19,9 +19,9 @@ namespace ReactApp1.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
         {
-            var order = await orderService.GetOrderByIdAsync(id);
+            var order = await orderService.GetOrderByIdAsync(id, cancellationToken);
 
             if (order is null)
                 return NotFound($"Order with ID {id} not found");
