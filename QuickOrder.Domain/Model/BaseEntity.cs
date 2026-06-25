@@ -1,7 +1,6 @@
-﻿namespace QuickOrder.Domain.Model
+﻿namespace QuickOrder.Domain.Model;
+
+public class BaseEntity
 {
-    public class BaseEntity
-    {
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }
